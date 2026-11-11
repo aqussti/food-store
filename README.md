@@ -10,7 +10,7 @@ Construida con **[Next.js / Python]** y PostgreSQL (**[Neon / Supabase]**) utili
 
 El desarrollo está dividido en 5 etapas para asegurar un trabajo equitativo y sin conflictos de código. Las etapas 1 y 5 (cimientos y revisión) se hacen en conjunto.
 
-**🧑‍💻 Fausto (@tu-usuario-github) - Gestión, Stock y Control:**
+**🧑‍💻 Fausto (@faustorivero69-hue) - Gestión, Stock y Control:**
 * [ ] **#6** Configurar permisos por rol desde el servidor.
 * [ ] **#12** CRUD de productos/categorías y alerta de stock bajo.
 * [ ] **#13** Flujo de avance y cancelación de pedidos.
