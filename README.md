@@ -16,7 +16,7 @@ El desarrollo está dividido en 5 etapas para asegurar un trabajo equitativo y s
 * [ ] **#13** Flujo de avance y cancelación de pedidos.
 * [ ] **#14** Gestión de usuarios, roles y Panel de Superadmin.
 
-**🧑‍💻 Agustín (@tu-usuario-github) - Tienda, Accesos y Cliente:**
+**🧑‍💻 Agustín (@aqussti) - Tienda, Accesos y Cliente:**
 * [ ] **#5** Registro e inicio de sesión de usuarios.
 * [ ] **#7** Catálogo público, buscador y filtros.
 * [ ] **#8** Lógica del carrito de compras.
