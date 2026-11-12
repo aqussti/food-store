@@ -4,11 +4,11 @@
 
 Stack elegido: **Next.js + TypeScript** y PostgreSQL en **Neon**, utilizando vibecoding.
 
-🔗 **App publicada:** [Tu enlace de Vercel aquí]
+🔗 **App publicada:** [Food Store](https://food-store-psi-three.vercel.app)
 
 ## Inicio del proyecto
 
-Primera entrega: una página que muestra **Food Store / Hola mundo**, para comprobar el deploy en Vercel. Neon y las funciones de la tienda se incorporan en los siguientes pasos.
+Estado al 12/11/2026: **Food Store / Hola mundo** publicado en Vercel y conexión a **Neon verificada**, tanto localmente como en producción. Las funciones de la tienda y las tablas del negocio todavía están pendientes.
 
 ### Ejecutar en tu computadora
 
@@ -43,7 +43,9 @@ La aplicación usa una conexión reutilizable solo del lado del servidor, config
 3. Verificar la conexión local con `pnpm db:check`. La consulta `SELECT 1` debe responder OK.
 4. Para probar la app localmente, ejecutar `pnpm dev` y abrir http://localhost:3000/api/health/db.
 
-La misma variable debe configurarse en Vercel (Project Settings → Environment Variables) para Production, Preview y Development. Después de un nuevo deploy, abrir `https://<url-publicada>/api/health/db`; debe responder `{"status":"ok","database":"connected"}`. La tarea #3 se marca completa recién cuando esa verificación publicada sea exitosa.
+En Vercel, `DATABASE_URL` está configurada como secreto para **Production y Preview**. Para trabajar localmente, cada integrante debe mantener su propia `.env.local`; Development en Vercel todavía no contiene esa variable. No sobrescribir ese archivo con `vercel env pull` sin conservar la conexión local.
+
+Verificación publicada del 12/11/2026: [estado de conexión con Neon](https://food-store-psi-three.vercel.app/api/health/db), HTTP 200 con `{"status":"ok","database":"connected"}`. Al cambiar variables en Vercel, realizar un nuevo deploy para aplicarlas. Production y Preview comparten por ahora la base del TP; coordinar una base de prueba antes de realizar cambios destructivos.
 
 Después de este deploy, el trabajo de Agustín continúa exclusivamente con #5, #7, #8, #9, #10 y #11, en el orden del roadmap. Las tareas de Fausto mantienen su responsable original.
 
@@ -67,8 +69,8 @@ El desarrollo está dividido en 5 etapas para asegurar un trabajo equitativo y s
 
 **🤝 Equipo - Cimientos y Cierre:**
 * [ ] **#1** Redactar README y Análisis.
-* [ ] **#2** Deploy inicial en Vercel (página "Hola Mundo").
-* [ ] **#3** Conectar Base de Datos externa.
+* [x] **#2** Deploy inicial en Vercel (página "Hola Mundo").
+* [x] **#3** Conectar Base de Datos externa.
 * [ ] **#4** Cargar datos de prueba (12 productos, 3 roles, etc.).
 * [ ] **#15** Prueba final cruzada (Guion de Demo UTN).
 
