@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #faf9f6;
+  color: #20251e;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+p {
+  margin: 0 0 16px;
+  color: #536548;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(40px, 10vw, 72px);
+  letter-spacing: -0.04em;
+}

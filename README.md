@@ -2,9 +2,39 @@
 
 **Food Store** es una tienda de comida 100% digital. Los visitantes pueden explorar el catálogo y armar carritos; los clientes registrados simulan compras; y el personal gestiona inventario, despacha pedidos y visualiza métricas mediante un sistema estricto de roles.
 
-Construida con **[Next.js / Python]** y PostgreSQL (**[Neon / Supabase]**) utilizando vibecoding (OpenCode/Antigravity).
+Stack elegido: **Next.js + TypeScript** y PostgreSQL en **Neon**, utilizando vibecoding.
 
 🔗 **App publicada:** [Tu enlace de Vercel aquí]
+
+## Inicio del proyecto
+
+Primera entrega: una página que muestra **Food Store / Hola mundo**, para comprobar el deploy en Vercel. Neon y las funciones de la tienda se incorporan en los siguientes pasos.
+
+### Ejecutar en tu computadora
+
+Requisitos: Node.js 22 o superior y pnpm 11.25.0.
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Abrir http://localhost:3000. Para comprobar la versión de producción:
+
+```bash
+pnpm build
+pnpm start
+```
+
+### Primer deploy en Vercel
+
+1. Subir esta base al repositorio de GitHub.
+2. En Vercel, elegir **Add New → Project** e importar `aqussti/food-store`.
+3. Mantener el framework **Next.js** y la carpeta raíz del repositorio.
+4. Publicar con **Deploy**. Este Hola mundo no necesita variables de entorno.
+5. Verificar la URL publicada y agregarla arriba. Recién entonces marcar la tarea #2 como terminada.
+
+Después de este deploy, el trabajo de Agustín continúa exclusivamente con #5, #7, #8, #9, #10 y #11, en el orden del roadmap. Las tareas de Fausto mantienen su responsable original.
 
 ## 🗺️ Roadmap a la Versión 1.0 (Tareas y Responsables)
 
