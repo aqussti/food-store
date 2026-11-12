@@ -107,3 +107,7 @@ El desarrollo está dividido en 5 etapas para asegurar un trabajo equitativo y s
 * **RN12 (Inmutabilidad del correo):** El correo electrónico de un usuario actúa como su identidad única en la base de datos; una vez registrado, no puede ser modificado por ningún rol (ni Cliente, ni Empleado, ni Superadmin). Si un usuario cambia de correo, debe crear una cuenta nueva.
 * **RN13 (Lógica del costo total):** El monto total de un pedido siempre debe calcularse en el servidor como la suma estricta de (precio histórico * cantidad) de cada producto incluido, más el costo de envío fijo. El sistema debe rechazar cualquier intento de manipular el total final desde el navegador.
 * **RN14 (Protección de stock negativo en edición):** Al crear o editar un producto desde el panel de control (Empleado/Superadmin), el sistema debe rechazar valores negativos tanto para el "stock actual" como para el "stock mínimo", arrojando un mensaje de error si se intenta guardar un valor menor a cero.
+
+## Coordinación entre agentes
+
+Antes de trabajar, leer [AGENTS.md](./AGENTS.md) (también referenciado desde [agent.md](./agent.md)). Cada agente debe identificarse, respetar las tareas del integrante al que asiste y documentar cada cambio junto con sus pruebas y pendientes en un archivo propio de [docs/cambios](./docs/cambios/). Mantener ese registro en el mismo commit que los cambios.
