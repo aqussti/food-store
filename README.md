@@ -31,8 +31,19 @@ pnpm start
 1. Subir esta base al repositorio de GitHub.
 2. En Vercel, elegir **Add New → Project** e importar `aqussti/food-store`.
 3. Mantener el framework **Next.js** y la carpeta raíz del repositorio.
-4. Publicar con **Deploy**. Este Hola mundo no necesita variables de entorno.
+4. Publicar con **Deploy**. La página Hola mundo no necesita variables de entorno; la conexión a Neon se configura en el paso siguiente.
 5. Verificar la URL publicada y agregarla arriba. Recién entonces marcar la tarea #2 como terminada.
+
+### Conexión a PostgreSQL en Neon
+
+La aplicación usa una conexión reutilizable solo del lado del servidor, configurada con `DATABASE_URL`.
+
+1. Copiar `.env.example` a `.env.local`.
+2. Completar `DATABASE_URL` con la cadena **pooled** del proyecto de Neon (Project → Connect). No subir `.env.local`: está excluido por `.gitignore`.
+3. Verificar la conexión local con `pnpm db:check`. La consulta `SELECT 1` debe responder OK.
+4. Para probar la app localmente, ejecutar `pnpm dev` y abrir http://localhost:3000/api/health/db.
+
+La misma variable debe configurarse en Vercel (Project Settings → Environment Variables) para Production, Preview y Development. Después de un nuevo deploy, abrir `https://<url-publicada>/api/health/db`; debe responder `{"status":"ok","database":"connected"}`. La tarea #3 se marca completa recién cuando esa verificación publicada sea exitosa.
 
 Después de este deploy, el trabajo de Agustín continúa exclusivamente con #5, #7, #8, #9, #10 y #11, en el orden del roadmap. Las tareas de Fausto mantienen su responsable original.
 
