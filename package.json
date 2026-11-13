@@ -7,12 +7,23 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "db:check": "node --env-file=.env.local scripts/check-db.mjs"
+    "db:check": "node --env-file=.env.local scripts/check-db.mjs",
+    "auth:setup": "node scripts/init-auth-env.mjs",
+    "auth:schema": "node --env-file=.env.local scripts/auth-schema.mjs",
+    "auth:migrate": "node --env-file=.env.local scripts/auth-schema.mjs --apply",
+    "db:migrate": "pnpm auth:migrate && node --env-file=.env.local scripts/db-migrate.mjs",
+    "test": "pnpm test:store && vitest run",
+    "test:store": "node --test tests/*.test.mjs",
+    "test:auth": "node --env-file=.env.local tests/auth-integration.mjs",
+    "test:integration": "node --env-file=.env.local scripts/test-isolated.mjs",
+    "db:seed": "node --env-file=.env.local scripts/seed-demo.mjs"
   },
   "dependencies": {
     "@neon/config": "^1.14.0",
     "@neon/env": "^2.1.3",
     "@vercel/functions": "^3.11.1",
+    "better-auth": "^1.7.20",
+    "lucide-react": "^1.72.0",
     "next": "^16.0.0",
     "pg": "^8.23.1",
     "react": "^19.2.0",
@@ -24,10 +35,11 @@
     "@types/pg": "^8.23.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "vitest": "^5.1.0"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.18.0"
   },
   "packageManager": "pnpm@11.25.0"
 }
