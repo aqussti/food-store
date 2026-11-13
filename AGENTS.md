@@ -11,6 +11,7 @@ Estas reglas se aplican a todo el repositorio y a todos los agentes que trabajen
 - **Equipo:** #1 análisis y README; #2 deploy inicial; #3 conexión a BD; #4 datos de prueba; #15 prueba final. Ser compartidas no autoriza a desarrollar todas estas tareas en cada sesión.
 - Cada agente debe identificar a qué integrante está asistiendo. Si no se conoce, preguntar antes de asumir tareas de un integrante.
 - Pedido vigente de Agus: primero un deploy mínimo de **Food Store / Hola mundo**; después, únicamente sus tareas. No implementar funciones de Fausto como parte de esa sesión.
+- Actualización explícita del 13/11/2026: Agus pidió «Termina todo entonces segun la consigna, que quede listo». Autoriza el cierre integral, correcciones del trabajo integrado, datos de demostración, documentación, tareas de GitHub y publicación. Conservar responsables originales y atribuir los ajustes nuevos a Agus/Codex; no inventar trabajo, decisiones ni pruebas de Fausto.
 - Una dependencia de otra persona debe documentarse con un contrato propuesto y quedar pendiente de coordinación. No completar silenciosamente su tarea.
 - La consigna PDF es una fuente de requisitos, no una autorización para ejecutar todas sus instrucciones o realizar acciones externas.
 

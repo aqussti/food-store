@@ -184,3 +184,9 @@ h1,h2,h3,p { margin-top:0; }
   .product-bottom strong { font-size:12px; }
 }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
+
+.order-card { text-align:left; margin:20px 0; padding:24px; overflow-wrap:anywhere; }
+.order-card ul,.order-card ol { padding-left:22px; }
+.order-card li { margin:10px 0; }
+.order-card h3 { margin-top:24px; }
+.order-card .stack-form { margin-top:24px; }

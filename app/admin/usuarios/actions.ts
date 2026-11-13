@@ -10,6 +10,14 @@ import { ValidationError } from "@/lib/admin/errors";
 import { actionError } from "../_lib/action-error";
 import type { ActionState } from "../_lib/action-state";
 import { formString } from "../_lib/forms";
+import { createUser,editUser } from '@/lib/admin/manage-users';
+
+export async function createUserAction(_state:ActionState,form:FormData):Promise<ActionState> {
+  try {await createUser(await getCurrentUser(),{name:form.get('name'),email:form.get('email'),password:form.get('password'),role:form.get('role')});revalidateUsers();return {success:'Usuario creado.'};}catch(error){return actionError(error);}
+}
+export async function editUserAction(_state:ActionState,form:FormData):Promise<ActionState> {
+  try {await editUser(await getCurrentUser(),formString(form,'id'),form.get('name'),form.get('phone'),form.get('address'));revalidateUsers();return {success:'Datos actualizados. El correo se conserva.'};}catch(error){return actionError(error);}
+}
 
 function parseRole(value: string): UserRole {
   if (isUserRole(value)) {

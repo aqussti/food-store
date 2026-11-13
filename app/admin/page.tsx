@@ -8,6 +8,7 @@ import {
   listProducts,
 } from "@/lib/admin/products";
 import {
+  detailedMetrics, ORDER_STATUSES, ORDER_STATUS_LABELS,
   countOrdersForEmployee,
   getOrderMetrics,
 } from "@/lib/admin/orders";
@@ -33,6 +34,7 @@ export default async function AdminDashboardPage() {
       ? await Promise.all([getOrderMetrics(user), countActiveUsers(user)])
       : [null, null];
 
+  const details = user.role === "superadmin" ? await detailedMetrics(user) : null;
   return (
     <>
       <div className="admin-topbar">
@@ -47,6 +49,7 @@ export default async function AdminDashboardPage() {
         </Link>
       </div>
 
+      {details && <section className="card"><h3>Pedidos por estado</h3><ul>{ORDER_STATUSES.map(status=><li key={status}>{ORDER_STATUS_LABELS[status]}: {details.states.find(s=>s.status===status)?.count || 0}</li>)}</ul><h3>Producto más vendido</h3><p>{details.best ? `${details.best.product_name}: ${details.best.units} unidades` : "Todavía no hay ventas."}</p></section>}
       <section className="admin-grid" aria-label="Indicadores">
         <article className="card">
           <h3>Productos activos</h3>

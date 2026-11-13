@@ -11,6 +11,11 @@ export function authOptions(database: Pool): BetterAuthOptions {
   return {
     appName: 'Food Store', database, secret, baseURL,
     trustedOrigins: [baseURL],
+    databaseHooks: { session: { create: { before: async (session) => {
+      const result = await database.query('SELECT is_active FROM food_store_users WHERE id=$1',[session.userId]);
+      if (!result.rows[0]?.is_active) return false;
+      return {data:session};
+    } } } },
     emailAndPassword: { enabled: true, minPasswordLength: 10, maxPasswordLength: 128, autoSignIn: true },
     user: {
       modelName: 'food_store_users',

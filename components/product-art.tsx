@@ -1,6 +1,7 @@
 import type { Product } from '@/lib/catalog';
 
 export function ProductArt({ product }: { product: Product }) {
+  if(product.image && /^(https?:\/\/|\/)/.test(product.image)) return <img className="product-art" src={product.image} alt={product.name} loading="lazy" style={{objectFit:"contain"}}/>;
   return <svg viewBox="0 0 160 190" className="product-art" role="img" aria-label={`Imagen de ejemplo: ${product.name}`}>
     <ellipse cx="80" cy="176" rx="35" ry="6" fill="#51452b" opacity=".08" />
     {product.shape === 'bottle' ? <>

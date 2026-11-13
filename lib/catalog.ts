@@ -2,7 +2,9 @@ export type Product = {
   id: string;
   name: string;
   detail: string;
-  category: 'Bebidas' | 'Almacén' | 'Frescos';
+  category: string;
+  stock?: number;
+  image?: string | null;
   price: number;
   shape: 'bottle' | 'box' | 'jar';
   color: string;
@@ -24,7 +26,7 @@ export const products: Product[] = [
 export const categories = ['Todo', 'Bebidas', 'Almacén', 'Frescos'] as const;
 export const money = (cents: number) => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(cents / 100);
 export const normalizeSearch = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-AR').trim();
-export function filterProducts(query: string, category: string) {
+export function filterProducts(query: string, category: string, source: Product[] = products) {
   const search = normalizeSearch(query);
-  return products.filter((product) => (category === 'Todo' || product.category === category) && normalizeSearch(product.name).includes(search));
+  return source.filter((product) => (category === 'Todo' || product.category === category) && normalizeSearch(product.name).includes(search));
 }

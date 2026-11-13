@@ -291,14 +291,14 @@ export async function cancelOrder(
 
     const currentStatus = current.rows[0].status;
 
-    if (currentStatus === "entregado" || currentStatus === "cancelado") {
+    if (currentStatus === "en_camino" || currentStatus === "entregado" || currentStatus === "cancelado") {
       throw new ConflictError(
         `El pedido está ${ORDER_STATUS_LABELS[currentStatus].toLowerCase()} y no se puede cancelar.`,
       );
     }
 
     if (
-      (currentStatus === "en_preparacion" || currentStatus === "en_camino") &&
+      currentStatus === "en_preparacion" &&
       currentUser.role !== "superadmin"
     ) {
       throw new AuthorizationError(
@@ -396,4 +396,11 @@ export async function countOrdersForEmployee(
     pending: Number(result.rows[0]?.pending ?? 0),
     active: Number(result.rows[0]?.active ?? 0),
   };
+}
+
+export async function detailedMetrics(actor: CurrentUser | null) {
+  superadminActor(actor);
+  const states=await getDb().query("SELECT status,count(*)::int AS count FROM food_store_orders GROUP BY status");
+  const best=await getDb().query(`SELECT i.product_name,sum(i.quantity)::int AS units FROM food_store_order_items i JOIN food_store_orders o ON o.id=i.order_id WHERE o.status IN ('confirmado','en_preparacion','en_camino','entregado') GROUP BY i.product_id,i.product_name ORDER BY sum(i.quantity) DESC,i.product_name LIMIT 1`);
+  return {states:states.rows,best:best.rows[0]};
 }

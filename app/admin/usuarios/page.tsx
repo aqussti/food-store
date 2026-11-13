@@ -4,7 +4,7 @@ import { listUsers } from "@/lib/admin/users";
 import { AccessDenied } from "../_components/access-denied";
 import { getAdminPageUser } from "../_lib/page-user";
 import { ActionForm } from "../_components/action-form";
-import { setUserActiveAction, updateUserRoleAction } from "./actions";
+import { createUserAction, editUserAction, setUserActiveAction, updateUserRoleAction } from "./actions";
 
 function roleBadgeClass(role: UserRole): string {
   if (role === "superadmin") {
@@ -48,6 +48,7 @@ export default async function UsersPage({
         <span className="badge">{users.length} usuarios</span>
       </div>
 
+      <section className="card"><h3>Crear usuario</h3><ActionForm action={createUserAction} submitLabel="Crear usuario" className="stack"><label>Nombre<input name="name" required maxLength={80}/></label><label>Correo<input name="email" type="email" required/></label><label>Contraseña inicial<input name="password" type="password" required minLength={10} maxLength={128} autoComplete="new-password"/></label><label>Rol<select name="role">{USER_ROLES.map(role=><option key={role} value={role}>{USER_ROLE_LABELS[role]}</option>)}</select></label></ActionForm></section>
       <section className="card">
         <form method="get" className="search-form">
           <label htmlFor="user-search">
@@ -91,7 +92,7 @@ export default async function UsersPage({
                   return (
                     <tr key={user.id}>
                       <td>
-                        <strong>{user.name}</strong>
+                        <strong>{user.name}</strong><details><summary>Editar datos</summary><ActionForm action={editUserAction} submitLabel="Guardar datos" className="stack"><input name="id" type="hidden" value={user.id}/><label>Nombre<input name="name" required maxLength={80} defaultValue={user.name}/></label><label>Teléfono<input name="phone" maxLength={30} defaultValue={user.phone}/></label><label>Dirección<input name="address" maxLength={180} defaultValue={user.address}/></label><p>El correo no se puede cambiar.</p></ActionForm></details>
                         <div className="muted">{user.email}</div>
                         {isSelf ? (
                           <div className="badge badge-success">Tu cuenta</div>

@@ -24,6 +24,7 @@ function isOrderStatus(value: string | undefined): value is OrderStatus {
 function canCancel(order: Order, role: UserRole): boolean {
   if (
     role === "cliente" ||
+    order.status === "en_camino" ||
     order.status === "entregado" ||
     order.status === "cancelado"
   ) {
@@ -32,7 +33,7 @@ function canCancel(order: Order, role: UserRole): boolean {
 
   if (
     role !== "superadmin" &&
-    (order.status === "en_preparacion" || order.status === "en_camino")
+    order.status === "en_preparacion"
   ) {
     return false;
   }

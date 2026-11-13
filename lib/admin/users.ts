@@ -9,6 +9,8 @@ export type AdminUser = {
   id: string;
   name: string;
   email: string;
+  phone: string;
+  address: string;
   role: UserRole;
   isActive: boolean;
   createdAt: Date;
@@ -19,6 +21,8 @@ type UserRow = {
   id: string;
   name: string;
   email: string;
+  phone: string;
+  address: string;
   role: string | null;
   isActive: boolean;
   createdAt: Date;
@@ -36,6 +40,7 @@ function mapUser(row: UserRow): AdminUser {
     id: row.id,
     name: row.name,
     email: row.email,
+    phone: row.phone, address: row.address,
     role,
     isActive: row.isActive,
     createdAt: row.createdAt,
@@ -49,7 +54,7 @@ function superadminActor(actor: CurrentUser | null): CurrentUser {
 
 async function loadUser(userId: string): Promise<AdminUser> {
   const result = await getDb().query<UserRow>(
-    `select id, name, email, role, is_active as "isActive",
+    `select id, name, email, phone, address, role, is_active as "isActive",
             "createdAt", "updatedAt"
      from food_store_users
      where id = $1`,
@@ -70,7 +75,7 @@ export async function listUsers(
   superadminActor(actor);
 
   const result = await getDb().query<UserRow>(
-    `select id, name, email, role, is_active as "isActive",
+    `select id, name, email, phone, address, role, is_active as "isActive",
             "createdAt", "updatedAt"
      from food_store_users
      where $1::text is null
@@ -148,6 +153,7 @@ export async function updateUserRole(
       [userId, nextRole],
     );
 
+    await client.query('DELETE FROM food_store_sessions WHERE "userId"=$1',[userId]);
     await client.query("commit");
   } catch (error) {
     await client.query("rollback");
@@ -217,6 +223,7 @@ export async function setUserActive(
       [userId, nextActive],
     );
 
+    await client.query('DELETE FROM food_store_sessions WHERE "userId"=$1',[userId]);
     await client.query("commit");
   } catch (error) {
     await client.query("rollback");

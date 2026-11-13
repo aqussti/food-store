@@ -14,7 +14,9 @@
     "db:migrate": "pnpm auth:migrate && node --env-file=.env.local scripts/db-migrate.mjs",
     "test": "pnpm test:store && vitest run",
     "test:store": "node --test tests/*.test.mjs",
-    "test:auth": "node --env-file=.env.local tests/auth-integration.mjs"
+    "test:auth": "node --env-file=.env.local tests/auth-integration.mjs",
+    "test:integration": "node --env-file=.env.local scripts/test-isolated.mjs",
+    "db:seed": "node --env-file=.env.local scripts/seed-demo.mjs"
   },
   "dependencies": {
     "@neon/config": "^1.14.0",
