@@ -26,6 +26,8 @@ Prueba de integración aislada: 28/28 aprobadas. Esquema qa aleatorio en Neon, s
 
 Resultados de compilación, publicación y prueba HTTP final se agregarán al completar la entrega. No confundir pruebas del servidor local con pruebas publicadas.
 
+Primera publicación b96306c / dpl_5gFczWNtcRGzhaJpPQ1hfTzbXUE2: compra HTTP y tres cuentas demo aprobadas. La prueba de registro nuevo detectó FAILED_TO_CREATE_SESSION: el hook consultaba desde otro pool un alta todavía no visible. Se corrigió para rechazar solo bajas explícitas; la FK garantiza la existencia del usuario. La limpieza del test ahora elimina su correo aleatorio incluso si el registro falla antes de devolver id. Se repite la prueba antes de cerrar la entrega.
+
 ## Límites humanos
 
 La defensa y subida al aula son del grupo. La bitácora identifica reconstrucciones documentales y no atribuye pruebas manuales no realizadas a los alumnos. No se cambian autores de commits ni se fabrican commits de Fausto.

@@ -13,7 +13,9 @@ export function authOptions(database: Pool): BetterAuthOptions {
     trustedOrigins: [baseURL],
     databaseHooks: { session: { create: { before: async (session) => {
       const result = await database.query('SELECT is_active FROM food_store_users WHERE id=$1',[session.userId]);
-      if (!result.rows[0]?.is_active) return false;
+      // El alta puede estar en una transacción aún no visible desde este pool.
+      // La FK verifica usuarios existentes; solo rechazamos bajas explícitas.
+      if (result.rows[0]?.is_active === false) return false;
       return {data:session};
     } } } },
     emailAndPassword: { enabled: true, minPasswordLength: 10, maxPasswordLength: 128, autoSignIn: true },

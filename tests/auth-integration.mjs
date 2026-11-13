@@ -37,6 +37,8 @@ try {
   await pool.query('UPDATE food_store_users SET is_active = false WHERE id = $1 AND email = $2', [userId, email]);
   const inactivePanel = await fetch(`${base}/admin`, { headers: { Cookie: cookie } });
   assert.match(await inactivePanel.text(), /Tu cuenta está desactivada/);
+  const inactiveLogin = await request('sign-in/email', {email,password}, false);
+  assert.ok(inactiveLogin.response.status >= 400, 'Una cuenta dada de baja no puede ingresar.');
   await pool.query("UPDATE food_store_users SET role = 'cliente', is_active = true WHERE id = $1 AND email = $2", [userId, email]);
   const duplicate = await request('sign-up/email', { email, password, name: 'Duplicado' }, false);
   assert.ok(duplicate.response.status >= 400, 'No puede duplicarse el correo.');
@@ -57,6 +59,6 @@ try {
   console.log('OK: accesos, sesión real del panel, Cliente rechazado, Empleado admitido, header falso rechazado y cuenta desactivada rechazada.');
 } finally {
   // Solo elimina la cuenta efímera creada por esta ejecución, nunca cuentas ajenas.
-  if (userId) await pool.query('DELETE FROM food_store_users WHERE id = $1 AND email = $2', [userId, email]);
+  await pool.query('DELETE FROM food_store_users WHERE email = $1', [email]);
   await pool.end();
 }
