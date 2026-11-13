@@ -11,7 +11,10 @@
     "auth:setup": "node scripts/init-auth-env.mjs",
     "auth:schema": "node --env-file=.env.local scripts/auth-schema.mjs",
     "auth:migrate": "node --env-file=.env.local scripts/auth-schema.mjs --apply",
-    "test": "node --test tests/*.test.mjs"
+    "db:migrate": "pnpm auth:migrate && node --env-file=.env.local scripts/db-migrate.mjs",
+    "test": "pnpm test:store && vitest run",
+    "test:store": "node --test tests/*.test.mjs",
+    "test:auth": "node --env-file=.env.local tests/auth-integration.mjs"
   },
   "dependencies": {
     "@neon/config": "^1.14.0",
@@ -30,10 +33,11 @@
     "@types/pg": "^8.23.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "vitest": "^5.1.0"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.18.0"
   },
   "packageManager": "pnpm@11.25.0"
 }

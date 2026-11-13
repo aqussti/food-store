@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { StoreProvider } from '@/components/store-provider';
 import { StoreShell } from '@/components/store-shell';
 import "./store.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Food Store",

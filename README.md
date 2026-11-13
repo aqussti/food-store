@@ -121,4 +121,14 @@ El desarrollo está dividido en 5 etapas para asegurar un trabajo equitativo y s
 
 ## Coordinación entre agentes
 
+### Accesos y tienda de Agus — avance local
+
+Registro e ingreso con Better Auth conectados al panel de Fausto. La tienda incluye el diseño móvil, catálogo de ejemplo y carrito persistente. Productos y precios son placeholders; pedidos, pagos e historial siguen pendientes.
+
+Para preparar los accesos, completar DATABASE_URL en `.env.local`, ejecutar `pnpm auth:setup` y luego `pnpm db:migrate`. Esto prepara primero las tablas de autenticación y después las administrativas. No ejecutar manualmente `db/auth/001-auth.sql` sobre una base existente. En Vercel configurar BETTER_AUTH_SECRET y BETTER_AUTH_URL; no subir `.env.local`.
+
+Verificaciones: `pnpm test`, `pnpm build` y, con el servidor local iniciado, `pnpm test:auth`. Esta última crea y elimina una cuenta efímera en la base configurada. Las pruebas administrativas con datos requieren una base temporal en TEST_DATABASE_URL.
+
+Detalle y límites: [registro de integración](./docs/cambios/2026-11-12-1800-agus-codex-5-integracion.md).
+
 Antes de trabajar, leer [AGENTS.md](./AGENTS.md) (también referenciado desde [agent.md](./agent.md)). Cada agente debe identificarse, respetar las tareas del integrante al que asiste y documentar cada cambio junto con sus pruebas y pendientes en un archivo propio de [docs/cambios](./docs/cambios/). Mantener ese registro en el mismo commit que los cambios.

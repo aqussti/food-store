@@ -18,6 +18,7 @@ export function StoreShell({ children }: { children: ReactNode }) {
     const value = new FormData(event.currentTarget).get('q')?.toString().trim() || '';
     router.push(value ? `/?q=${encodeURIComponent(value)}` : '/');
   }
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) return <div className="admin-route">{children}</div>;
   return <div className="app-frame">
     <a className="skip-link" href="#contenido">Ir al contenido</a>
     <header className="store-header">
