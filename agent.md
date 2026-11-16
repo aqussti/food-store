@@ -7,3 +7,5 @@ Leer y cumplir [AGENTS.md](./AGENTS.md), la fuente única de instrucciones compa
 Cada agente debe identificar al integrante al que asiste, respetar sus tareas del roadmap y documentar **cada cambio** en un registro propio dentro de `docs/cambios/`, junto con sus pruebas y pendientes. La plantilla y las reglas de coordinación están en `AGENTS.md`.
 
 Cierre integral autorizado por Agus (13/11/2026): ver [registro de cierre](docs/cambios/2026-11-13-agus-codex-cierre.md), README, BITACORA-IA.md y docs/DEMO.md. Conservar la atribución original de Fausto y documentar cada corrección nueva con su autor real.
+
+Revisión vigente del 16/11/2026: [escritorio publicado y guion final](docs/cambios/2026-11-16-1255-agus-codex-escritorio-demo.md), [evidencias y pendientes de entrega](docs/REVISION-FINAL.md). El resultado publicado actualiza los pendientes históricos del registro del 13/11.

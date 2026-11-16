@@ -1,10 +1,10 @@
 # Escritorio y revisión final del guion
 
-- Fecha y hora (Argentina): 16/11/2026, 10:00 (registro de cierre de revisión).
+- Fecha y hora (Argentina): 16/11/2026, 12:55. Se corrige la hora provisoria del primer registro.
 - Responsable / GitHub: Agustín Tromba / @aqussti.
 - Agente / herramienta: Codex.
 - Tareas del roadmap: #7, #8 y #15.
-- Estado: validado localmente; publicación en curso.
+- Estado: publicado y verificado.
 
 ## Pedido y alcance
 
@@ -16,6 +16,7 @@ Agus pidió una vista de escritorio, instrucciones para cerrar Issues y revisió
 - `docs/DEMO.md`: preparación de sesiones y productos, tiempos, pedidos separados, resultados concretos, restauración de datos y precisión sobre protección de Superadmin.
 - `docs/REVISION-FINAL.md`: evidencia diferenciada por entorno, pendientes humanos e instrucciones de cierre de Issues.
 - Este registro identifica todos los cambios de la sesión. No se modifican registros de Fausto.
+- `agent.md`: enlace a la revisión vigente para que el siguiente agente encuentre los resultados.
 
 ## Verificación
 
@@ -23,4 +24,6 @@ Build aprobado; 4 pruebas de carrito/búsqueda y 28 pruebas aisladas en Neon apr
 
 ## Pendientes
 
-Registrar resultado de publicación. El grupo debe ensayar el guion completo, revisar bitácora, cerrar los Issues correspondientes y subir el TXT privado al aula. No se presentan las pruebas de servicios como un ensayo manual completo.
+Publicación `35cb9df` aprobada: Vercel `dpl_HGy2focEwcdTGKS9GcLHf39z6o9t`, estado Ready, alias https://food-store-psi-three.vercel.app. Se revisó visualmente el catálogo publicado a 1440 px: contenedor de 1280 px y sin desbordamiento horizontal de página. Captura guardada fuera del repositorio en la carpeta de outputs de la sesión. Este ajuste documental registra el resultado y corrige la hora del registro inicial.
+
+El grupo debe ensayar el guion completo, revisar bitácora, cerrar los Issues correspondientes y subir el TXT privado al aula. No se presentan las pruebas de servicios como un ensayo manual completo.

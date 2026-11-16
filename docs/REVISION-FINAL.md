@@ -17,6 +17,8 @@ Las pruebas de servicios aislados no equivalen a ejecutar manualmente cada formu
 
 La prueba de registro publicada aprobada el 16/11 confirma la corrección de sesión de `12a5fd9`. Este resultado actualiza el pendiente histórico del registro del 13/11.
 
+Escritorio publicado: commit `35cb9df`, despliegue Vercel `dpl_HGy2focEwcdTGKS9GcLHf39z6o9t` Ready. Catálogo verificado visualmente en el dominio público a 1440 px, contenedor de 1280 px sin desbordamiento general.
+
 ## Cómo cerrar los Issues
 
 1. Abrir https://github.com/aqussti/food-store/issues y elegir un Issue asignado al integrante.
